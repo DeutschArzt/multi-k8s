@@ -8,3 +8,4 @@ spec:
     email: 'mjbuhr1@gmail.com'
     privateKeySecretRef:
       name: letsencrypt-prod
+    http01: {}
