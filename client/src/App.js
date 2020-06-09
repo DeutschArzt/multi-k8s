@@ -12,7 +12,7 @@ function App() {
         <header>
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            I finally got Kubernetes to work! ...or did I?
+            I finally got Kubernetes to work! ...or did I? Beep. Boop.
           </p>
           <p>
             Edit <code>src/App.js</code> and save to reload.
