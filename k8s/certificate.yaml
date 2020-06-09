@@ -4,7 +4,7 @@ metadata:
   name: multi-k8s-com-tls
 spec:
   secretName: multi-k8s-com
-  issueRef:
+  issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
   commonName: multi-k8s.com
