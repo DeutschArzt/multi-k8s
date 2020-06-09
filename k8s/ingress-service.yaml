@@ -5,15 +5,28 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/rewrite-target: /$1
-    cert-manager.io/issuer: 'letsencrypt-prod'
+    cert-manager.io/cluster-issuer: 'letsencrypt-prod'
     nginx.ingress.kubernetes.io/ssl-redirect: 'true'
 spec:
-  tos:
+  tls:
     - hosts:
-      - www.multi-k8s.com
+        - multi-k8s.com
+        - www.multi-k8s.com
       secretName: multi-k8s-com
   rules:
-    - http:
+    - host: multi-k8s.com
+      http:
+        paths:
+          - path: /?(.*)
+            backend:
+              serviceName: client-cluster-ip-service
+              servicePort: 3000
+          - path: /api/?(.*)
+            backend:
+              serviceName: server-cluster-ip-service
+              servicePort: 5000
+    - host: www.multi-k8s.com
+      http:
         paths:
           - path: /?(.*)
             backend:
